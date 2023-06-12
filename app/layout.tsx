@@ -1,7 +1,10 @@
+
 import './globals.css'
+import React from 'react';
 import { Inter } from 'next/font/google'
 import Provider from '@/components/provider/Provider'
-
+import ThemeFuntional from '@/components/themeFuntional/ThemeFuntional';
+import Layout from '@/components/layoutS/Layout';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -14,12 +17,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
-    
+
     <html lang="en">
-      <Provider>
-          <body className={inter.className}>{children}</body>
-      </Provider>
+        <body className={inter.className}>
+          <ThemeFuntional>
+            <Layout>
+              {children}
+            </Layout>
+          </ThemeFuntional>
+        </body>
     </html>
   )
 }
+

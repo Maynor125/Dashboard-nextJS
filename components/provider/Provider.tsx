@@ -1,13 +1,27 @@
-'use client'
+"use client";
 
-import { SessionProvider } from 'next-auth/react';
- 
-const Provider = ({
-    children,
-  }: {
-    children: React.ReactNode
-  })=>{
-    return <SessionProvider>{children}</SessionProvider>
-}
+import darkTheme from "@/theme/darkTheme";
+import ligthTheme from "@/theme/ligthTheme";
+import {
+  Box,
+  CssBaseline,
+  ThemeProvider,
+  useTheme,
+  IconButton,
+  createTheme,
+} from "@mui/material";
+import { SessionProvider } from "next-auth/react";
+import React from "react";
+const colorModeContext = React.createContext({ toggleColorMode: () => {} });
+import { Header } from "../header";
 
-export default Provider
+const Provider = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <CssBaseline />
+      <SessionProvider>{children}</SessionProvider>
+    </>
+  );
+};
+
+export default Provider;
